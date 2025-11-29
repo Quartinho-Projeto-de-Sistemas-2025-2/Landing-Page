@@ -1,54 +1,560 @@
-:root{
-  --bg:#f7f8fb;
-  --card:#ffffff;
-  --accent:#FF8533; /* cor principal alterada para laranja */
-  --accent-100:#fff4ea;
-  --accent-200:#ffd8bf;
-  --muted:#6b7280;
-  --max-width:1100px;
-  --gap:24px;
-}
-*{box-sizing:border-box}
-body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:var(--bg);color:#0f172a;line-height:1.5}
-.container{max-width:var(--max-width);margin:0 auto;padding:28px}
-.site-header{background:linear-gradient(90deg, #ffffff, #f8fafc);border-bottom:1px solid var(--accent-100)}
-.header-inner{display:flex;align-items:center;justify-content:space-between}
-.brand{margin:0;font-size:2rem;color:#0f172a;font-family:'Righteous',cursive}
-.nav a{margin-left:18px;color:#0f172a;text-decoration:none;font-weight:600}
-.nav a.cta{padding:8px 12px;border-radius:6px;border:1px solid var(--accent);color:var(--accent)}
-.hero{padding:56px 0;background:linear-gradient(180deg,#fff4ea,transparent)}
-.hero-inner{display:grid;grid-template-columns:1fr 360px;gap:var(--gap);align-items:center}
-.hero-content h2{margin:0 0 12px;font-size:1.9rem}
-.lead{color:var(--muted);margin:0 0 16px}
-.actions .btn{display:inline-block;margin-right:12px;text-decoration:none;padding:10px 16px;border-radius:8px}
-.btn.primary{background:var(--accent);color:white}
-.btn.outline{border:1px solid var(--accent-200);color:var(--accent);background:transparent}
-.hero-image{height:220px;background: 0;border-radius:12px}
-.main{padding-bottom:56px}
-.card{background:var(--card);padding:20px;margin-top:18px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04)}
-.contact-grid{display:flex;align-items:center;gap:16px}
-.contact-image{width:96px;height:auto;border-radius:8px;flex-shrink:0}
-.contact-content h3{margin:0 0 8px;font-size:1.25rem}
-.contact-content p{margin:0;color:var(--muted)}
-.features-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-left:18px}
-.features-list li{margin-bottom:8px}
-.mvp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.cta-card{text-align:center}
-.site-footer{padding:20px 0;border-top:1px solid var(--accent-100);margin-top:28px;text-align:center}
-.muted{color:var(--muted);font-size:0.9rem}
-
-@media (max-width:900px){
-  .hero-inner{grid-template-columns:1fr}
-  .features-list{grid-template-columns:1fr}
-  .mvp-grid{grid-template-columns:1fr}
-  .nav{display:none}
-  .brand{font-size:1.1rem}
-  .contact-grid{flex-direction:row}
+:root {
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --accent: #FF8533;
+  /* cor principal alterada para laranja */
+  --accent-100: #fff4ea;
+  --accent-200: #ffd8bf;
+  --muted: #6b7280;
+  --max-width: 1100px;
+  --gap: 24px;
+  --radius-12: 12px;
+  --text: #0f172a;
+  --shadow-1: 0 6px 18px rgba(16, 24, 40, 0.06);
 }
 
-@media (max-width:480px){
-  .hero-content h2{font-size:1.3rem}
-  .container{padding:18px}
-  .contact-grid{flex-direction:column;align-items:flex-start}
-  .contact-image{width:80px}
+html {
+  scroll-behavior: smooth
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: Inter, system-ui, Segoe UI, Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: #0f172a;
+  line-height: 1.5
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  z-index: 1000
+}
+
+.btn:focus-visible,
+.nav a:focus-visible,
+.skip-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px
+}
+
+.btn {
+  cursor: pointer
+}
+
+.btn:hover {
+  opacity: .95
+}
+
+.btn:active {
+  opacity: .9
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white
+}
+
+.btn.outline {
+  border: 1px solid var(--accent-200);
+  color: var(--accent);
+  background: transparent
+}
+
+/* Variação verde para botão outline (Lattes) */
+.btn.outline.green {
+  border-color: #86efac; /* verde claro */
+  color: #16a34a;        /* verde médio */
+}
+.btn.outline.green:hover,
+.btn.outline.green:focus-visible {
+  background: #ecfdf5;   /* verde bem suave */
+}
+
+/* Tamanho pequeno para caber no card sem pesar o layout */
+.btn.sm {
+  padding: 6px 10px;
+  font-size: .85rem;
+  border-radius: var(--radius-12);
+}
+
+.actions .btn {
+  display: inline-block;
+  margin-right: 12px;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-12)
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px
+}
+
+.site-header {
+  background: linear-gradient(90deg, #ffffff, #f8fafc);
+  border-bottom: 1px solid var(--accent-100)
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.brand {
+  margin: 0;
+  font-size: 2rem;
+  color: #0f172a;
+  font-family: 'Righteous', cursive
+}
+
+.nav a {
+  margin-left: 18px;
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600
+}
+
+.hero {
+  padding: 56px 0;
+  background: linear-gradient(180deg, #fff4ea, transparent)
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--gap);
+  align-items: center
+}
+
+.hero-content h2 {
+  margin: 0 0 12px;
+  font-size: 1.9rem
+}
+
+.lead {
+  color: var(--muted);
+  margin: 0 0 16px
+}
+
+.hero-image {
+  height: 220px;
+  background: none;
+  border-radius: var(--radius-12)
+}
+
+.main {
+  padding-bottom: 56px
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  margin-top: 18px;
+  border-radius: var(--radius-12);
+  box-shadow: var(--shadow-1)
+}
+
+.contact-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px
+}
+
+.contact-image {
+  width: 96px;
+  height: auto;
+  border-radius: var(--radius-12);
+  flex-shrink: 0
+}
+
+.contact-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem
+}
+
+.contact-content p {
+  margin: 0;
+  color: var(--muted)
+}
+
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding-left: 18px
+}
+
+.features-list li {
+  margin-bottom: 8px
+}
+
+.mvp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px
+}
+
+.cta-card {
+  text-align: center
+}
+
+.site-footer {
+  padding: 20px 0;
+  border-top: 1px solid var(--accent-100);
+  margin-top: 28px;
+  text-align: center
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem
+}
+
+/* Depoimentos */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px
+}
+
+.testimonial {
+  border-left: 4px solid var(--accent-200);
+  padding-left: 12px
+}
+
+.testimonial .quote {
+  margin: 0 0 8px;
+  color: #0f172a
+}
+
+.testimonial .author {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600
+}
+
+/* Banner CTA */
+.cta-banner {
+  background: var(--accent-100);
+  border-top: 1px solid var(--accent-200)
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px
+}
+
+.cta-text {
+  margin: 0
+}
+
+.cta-actions .btn {
+  margin-right: 8px
+}
+
+/* Menu móvel acessível */
+.mobile-nav {
+  display: none;
+  position: relative
+}
+
+.mobile-nav summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-12);
+  color: var(--accent);
+  font-weight: 600
+}
+
+.mobile-nav summary::-webkit-details-marker {
+  display: none
+}
+
+.mobile-nav[open] summary {
+  background: var(--accent-100)
+}
+
+.mobile-nav .nav-list {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  background: var(--card);
+  border: 1px solid var(--accent-100);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+  min-width: 220px;
+  padding: 8px
+}
+
+.mobile-nav .nav-list a {
+  display: block;
+  padding: 10px 12px;
+  color: #0f172a;
+  text-decoration: none;
+  border-radius: var(--radius-12)
+}
+
+.mobile-nav .nav-list a:hover,
+.mobile-nav .nav-list a:focus-visible {
+  background: var(--accent-100)
+}
+
+@media (max-width:900px) {
+  .hero-inner {
+    grid-template-columns: 1fr
+  }
+
+  .features-list {
+    grid-template-columns: 1fr
+  }
+
+  .mvp-grid {
+    grid-template-columns: 1fr
+  }
+
+  .nav {
+    display: none
+  }
+
+  .mobile-nav {
+    display: block
+  }
+
+  .brand {
+    font-size: 1.1rem
+  }
+
+  .contact-grid {
+    flex-direction: row
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr
+  }
+
+  .cta-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 -6px 18px rgba(16, 24, 40, 0.08)
+  }
+
+  body {
+    padding-bottom: 92px
+  }
+}
+
+@media (max-width:480px) {
+  .hero-content h2 {
+    font-size: 1.3rem
+  }
+
+  .container {
+    padding: 18px
+  }
+
+  .contact-grid {
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .contact-image {
+    width: 80px
+  }
+}
+
+/* Depoimentos */
+.testimonials-wrapper {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: var(--radius-12);
+  padding: 1rem;
+  box-shadow: var(--shadow-1);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-quote {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: auto;
+  text-align: right;
+}
+
+/* Mobile: tornar em carrossel simples (exibe 1 card) */
+@media (max-width: 780px) {
+  .testimonials-wrapper {
+    display: block;
+    position: relative;
+  }
+
+  .testimonial-card {
+    display: none;
+  }
+
+  .testimonial-card.is-active {
+    display: block;
+  }
+
+  .testimonials-controls {
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    margin-top: .5rem;
+  }
+}
+
+/* Estilinho do CTA do formulário */
+.testimonial-cta {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.testimonial-cta a {
+  text-decoration: underline;
+  color: #FF8533;
+}
+
+/* Wrapper responsivo para protótipo do Figma */
+.figma-embed {
+  width: 100%;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-12);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+
+.figma-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Mobile: proporção mais alta */
+@media (max-width: 780px) {
+  .figma-embed {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+
+.chart-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 1.5rem;
+}
+
+.chart-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: var(--radius-12);
+  box-shadow: var(--shadow-1);
+}
+
+/* Badge de respostas */
+.badge {
+  display: inline-block;
+  margin-left: .5rem;
+  padding: .2rem .5rem;
+  background: var(--accent-100);
+  color: var(--accent);
+  border: 1px solid var(--accent-200);
+  border-radius: 9999px;
+  font-size: .8rem;
+}
+
+/* Equipe */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.team-member {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  padding: 12px;
+  border: 1px solid var(--accent-100);
+  border-radius: var(--radius-12);
+  background: #fff;
+  min-height: 220px;
+  height: 100%;
+}
+
+.team-member img {
+  border-radius: 50%;
+  box-shadow: var(--shadow-1);
+}
+
+.team-name { font-weight: 600; text-align: center; }
+.team-handle { color: var(--muted); font-size: .9rem; }
+/* Minibio no card do coordenador */
+.team-bio { color: var(--muted); font-size: .85rem; text-align: center; }
+/* Selo de função (coordenador) */
+.role-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--accent-100);
+  color: var(--accent);
+  border: 1px solid var(--accent-200);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.team-member.coordinator {
+  border-color: var(--accent-200);
+}
+
+/* Desktop: 5 colunas e coordenador central na coluna 3 */
+@media (min-width: 900px) {
+  .team-grid { grid-template-columns: repeat(5, 1fr); }
+  .team-member.coordinator { grid-column: 3; }
 }
