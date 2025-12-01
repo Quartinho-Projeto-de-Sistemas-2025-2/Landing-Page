@@ -29,7 +29,10 @@
   <a href="#features" class="skip-link">Ir para conteúdo</a>
   <header class="site-header">
     <div class="container header-inner">
-      <h1 class="brand">Quartinho</h1>
+      <div class="brand">
+        <img src="./imagens/casa1.png" alt="Logo Quartinho" width="40" height="40">
+        <h1>Quartinho</h1>
+      </div>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#features">Quem somos</a>
         <a href="#mvp">Funcionalidades</a>
@@ -54,14 +57,6 @@
           inteligentes por proximidade ao campus, afinidade entre moradores, contratos simplificados, garantia de
           segurança e anúncios verificados — tudo pensado para facilitar a vida do estudante universitário.</p>
 
-        <!-- Estatísticas locais (valor de confiança) -->
-        <div class="hero-stats" aria-hidden="false" style="margin:12px 0;display:flex;gap:12px;flex-wrap:wrap;">
-          <span style="background:#fff4ea;padding:6px 10px;border-radius:999px;font-weight:600">72k+ estudantes
-            (TO)</span>
-          <span style="background:#fff;padding:6px 10px;border-radius:999px">70.1% cursos presenciais (TO)</span>
-          <span style="background:#fff;padding:6px 10px;border-radius:999px">43% alunos de fora — UFT</span>
-        </div>
-
         <p class="actions">
           <a href="#mvp" class="btn primary">Explorar Quartinho</a>
           <a href="#features" class="btn outline">Como funciona</a>
@@ -73,8 +68,7 @@
         </p>
       </div>
       <div class="hero-image">
-        <img src="./imagens/casa1.png" alt="Casa — vista externa" width="360" height="220"
-          style="border:0;box-shadow:none;max-width:100%;height:auto;display:block;" />
+        <img src="./imagens/login.jpg" alt="Login — login app" />
       </div>
     </div>
   </section>
@@ -101,65 +95,30 @@
 
     <section id="mvp" class="card">
       <h3>Funcionalidades principais</h3>
-      <ul class="features-list">
-        <li><strong>Filtros inteligentes</strong> — distância ao campus, hábitos, gênero, acessibilidade, faixa de preço
-          e
-          serviços (internet, limpeza).</li>
-        <li><strong>Anúncios centralizados</strong> — fotos, preço, localização e perfil dos moradores em um só lugar.
-        </li>
-        <li><strong>Verificação em múltiplas etapas</strong> — cadastro com e-mail institucional e upload de comprovante
-          de matrícula.</li>
-        <li><strong>Contratos padronizados & acordo de convivência</strong> — segurança jurídica e um processo claro
-          para
-          resolver pequenos conflitos.</li>
-        <li><strong>Contato seguro</strong> — comunicação protegida entre anunciante e interessado.</li>
-        <li><strong>Mobile-first</strong> — foco em experiência para celulares e web responsivo.</li>
-      </ul>
-    </section>
-    <!-- INÍCIO: Carrossel único com lightbox -->
-    <section id="only-carousel" class="card" aria-labelledby="carousel-title">
-      <h3 id="carousel-title">Mockups do app</h3>
-      <p class="muted">Use as setas, pontos ou arraste para navegar. Clique na imagem para ampliar.</p>
 
-      <div class="oc-carousel" tabindex="0" aria-roledescription="carousel" aria-label="Carrossel de protótipos">
-        <button class="oc-btn oc-prev" aria-label="Slide anterior">‹</button>
+      <div class="mvp-grid">
 
-        <div class="oc-track-wrapper">
-          <ul class="oc-track" role="list">
-            <li class="oc-slide" data-index="0"><img src="imagens/tela1.jpg"
-                alt="Tela inicial do Quartinho — lista de quartos"></li>
-            <li class="oc-slide" data-index="1"><img src="imagens/login.jpg"
-                alt="Tela de login — autenticação por e-mail institucional"></li>
-            <li class="oc-slide" data-index="2"><img src="imagens/cadastro.jpg"
-                alt="Tela de cadastro — criação de conta e verificação"></li>
-            <li class="oc-slide" data-index="3"><img src="imagens/local.jpg"
-                alt="Tela de localização — mapa com distâncias aos campi"></li>
-            <li class="oc-slide" data-index="4"><img src="imagens/home.jpg" alt="Tela Home do app"></li>
-            <li class="oc-slide" data-index="5"><img src="imagens/alugel.jpg"
-                alt="Tela de aluguel — opções e faixas de preço"></li>
-            <li class="oc-slide" data-index="6"><img src="imagens/kitnets.jpg"
-                alt="Tela de kitnets — listagem de kitnets"></li>
-          </ul>
+        <!-- Lista das funcionalidades (lado esquerdo) -->
+        <ul class="features-list">
+          <li><strong>Filtros inteligentes</strong> — distância ao campus, hábitos, gênero, acessibilidade, faixa de
+            preço e serviços (internet, limpeza).</li>
+          <li><strong>Anúncios centralizados</strong> — fotos, preço, localização e perfil dos moradores em um só lugar.
+          </li>
+          <li><strong>Verificação em múltiplas etapas</strong> — cadastro com e-mail institucional e upload de
+            comprovante de matrícula.</li>
+          <li><strong>Contratos padronizados & acordo de convivência</strong> — segurança jurídica e processo claro para
+            resolver pequenos conflitos.</li>
+          <li><strong>Contato seguro</strong> — comunicação protegida entre anunciante e interessado.</li>
+          <li><strong>Mobile-first</strong> — foco em experiência para celulares e web responsivo.</li>
+        </ul>
+
+        <!-- Vídeo do lado direito -->
+        <div class="mvp-video">
+          <video src="./videos/pitch.mp4" autoplay muted loop></video>
         </div>
-
-        <button class="oc-btn oc-next" aria-label="Próximo slide">›</button>
-
-        <div class="oc-dots" role="tablist" aria-label="Indicadores do carrossel"></div>
-      </div>
-
-      <!-- Lightbox simples -->
-      <div id="oc-lightbox" class="oc-lb" aria-hidden="true" role="dialog" aria-modal="true"
-        aria-label="Visualizador de imagens">
-        <div class="oc-lb-inner" role="document">
-          <button class="oc-lb-close" aria-label="Fechar (Esc)">✕</button>
-          <button class="oc-lb-prev" aria-label="Anterior (seta esquerda)">‹</button>
-          <img id="oc-lb-img" src="" alt="">
-          <button class="oc-lb-next" aria-label="Próximo (seta direita)">›</button>
-        </div>
-        <div class="oc-lb-overlay" data-close="true" tabindex="-1"></div>
       </div>
     </section>
-    <!-- FIM: Carrossel único -->
+
 
 
     <!-- Seção do Protótipo Figma -->
@@ -175,7 +134,8 @@
 
     <section id="problema" class="card">
       <h3>Desafio da moradia estudantil em Palmas</h3>
-      <p>Em Palmas, o acesso à moradia estudantil é impactado por fatores locais: múltiplos campus dispersos pela cidade,
+      <p>Em Palmas, o acesso à moradia estudantil é impactado por fatores locais: múltiplos campus dispersos pela
+        cidade,
         anúncios informais e pouca padronização de informações, além do forte cenário de moradia compartilhada. Isso
         gera insegurança, contratos pouco transparentes e dificuldades de compatibilidade entre moradores.</p>
       <ul>
@@ -266,30 +226,6 @@
       </ul>
     </section>
 
-    <!-- INÍCIO: Seção de Depoimentos (substitui a atual) -->
-    <section id="depoimentos" class="card testimonials">
-      <h3>Depoimentos</h3>
-
-      <!-- CONTROLES: opcional, aparece em telas maiores -->
-      <div class="testimonials-controls" aria-hidden="true">
-        <button id="prevTestimonial" aria-label="Depoimento anterior">←</button>
-        <button id="nextTestimonial" aria-label="Próximo depoimento">→</button>
-      </div>
-
-      <!-- Grid (desktop) / Carrossel (mobile) -->
-      <div class="testimonials-wrapper" aria-live="polite">
-        <!-- Cards serão injetados por JS -->
-      </div>
-
-      <!-- Link para enviar novo depoimento (p. ex. formulário Google Forms) -->
-      <p class="testimonial-cta">
-        Quer deixar um depoimento? <a
-          href="mailto:sac@quartinho.com?subject=Depoimento%20Quartinho&body=Escreva%20seu%20depoimento%20aqui."
-          rel="noopener">Envie
-          por e-mail</a>.
-      </p>
-    </section>
-    <!-- FIM: Seção de Depoimentos -->
 
     <section class="card" id="graficos-pesquisa">
       <h3>O que os estudantes responderam? <span class="badge" id="respostas-badge" aria-live="polite"
